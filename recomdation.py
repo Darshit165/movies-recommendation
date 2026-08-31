@@ -73,3 +73,7 @@ movies['keywords'] = movies['keywords'].apply(lambda x: [i.replace(" ","") for i
 movies['cast'] = movies['cast'].apply(lambda x: [i.replace(" ","") for i in x])
 movies['crew'] = movies['crew'].apply(lambda x: [i.replace(" ","") for i in x])
 print(movies.head())
+#combine all the columns into a new column called tags and convert it into string format
+movies['tags'] = movies['genres'] + movies['keywords'] + movies['cast'] + movies['crew'] + movies['overview']
+print(movies['tags'].head())
+print(movies.head())
