@@ -90,11 +90,6 @@ print(new_movies["tags"][0])
 #we have movies id , title and tags columns for build the recommendation system we have to convert the tags column into vector format and then we will use cosine similarity to find the similarity between the movies and then we will recommend the movies based on the similarity score
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-
-#convert tags column into vector format
-cv = CountVectorizer(max_features=5000, stop_words='english')
-vectors = cv.fit_transform(new_movies['tags']).toarray()
-print(cv.get_feature_names_out())
 #we differnt words with similar meaning like "fight" and "fighting" so we will use stemming to convert them into the same word and then we will convert them into vector format
 from nltk.stem.porter import PorterStemmer
 ps = PorterStemmer()
@@ -106,4 +101,9 @@ def stem(text):
     return " ".join(y)
 
 new_movies['tags'] = new_movies['tags'].apply(stem)
-print(new_movies['tags'][0])
+print(new_movies['tags'][0]) 
+
+#convert tags column into vector format
+cv = CountVectorizer(max_features=5000, stop_words='english')
+vectors = cv.fit_transform(new_movies['tags']).toarray()
+print(cv.get_feature_names_out())
