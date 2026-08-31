@@ -95,5 +95,15 @@ from sklearn.metrics.pairwise import cosine_similarity
 cv = CountVectorizer(max_features=5000, stop_words='english')
 vectors = cv.fit_transform(new_movies['tags']).toarray()
 print(cv.get_feature_names_out())
-#we differbt words with similar meaning like "fight" and "fighting" so we will use stemming to convert them into the same word and then we will convert them into vector format
+#we differnt words with similar meaning like "fight" and "fighting" so we will use stemming to convert them into the same word and then we will convert them into vector format
 from nltk.stem.porter import PorterStemmer
+ps = PorterStemmer()
+
+def stem(text):
+    y = []
+    for i in text.split():
+        y.append(ps.stem(i))
+    return " ".join(y)
+
+new_movies['tags'] = new_movies['tags'].apply(stem)
+print(new_movies['tags'][0])
