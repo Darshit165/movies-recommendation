@@ -17,3 +17,13 @@ print(credits.head())
 movies = movies[['genres','movie_id','keywords','title','overview','cast','crew']]
 print(movies.head())
 print(movies.shape)
+#create a new column called tags and combine [genres, keywords, overview, cast, crew]
+#before combining we need to convert the data in these columns into string format because some of the data is in list format so we will convert them into string format and then combine them
+#remove missing values and duplicates from the dataset
+print(movies.isnull().sum())
+movies = movies.dropna()
+print(movies.isnull().sum())
+print(movies.duplicated().sum())
+#clean genre columns with string conversion
+print(movies.iloc[0].genres)
+#convert to ["action","adventure","fantasy","science fiction"]
