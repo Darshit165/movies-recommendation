@@ -38,3 +38,19 @@ print(movies["genres"].head())
 #convert keywords column in the same way as genres
 movies['keywords'] = movies['keywords'].apply(convert)
 print(movies["keywords"].head())
+#convert cast column in the same way as genres but we only want to keep the first 3 cast members because they are the main actors of the movie and we will convert them into string format and then we will combine them with other columns
+#convert crew column in the same way as genres but we only want to keep the director of the movie because he is the main person behind the movie and we will convert them into string format and then we will combine them with other columns
+print (movies.iloc[0].cast)
+def convert_cast(obj):
+    l=[]
+
+    counter=0
+    for i in ast.literal_eval(obj):
+        if counter<3:
+            l.append(i['name'])
+            counter+=1
+        else:
+            break
+    return l
+movies['cast'] = movies['cast'].apply(convert_cast)
+print(movies["cast"].head(1))
