@@ -11,3 +11,9 @@ movies = movies.merge(credits, on='title')
 print(movies.head())
 print(movies.shape)
 print(credits.head())
+#remove unwanted columns from the dataset and create tags in our analyse we dnt need numeric colums because we recommend based on the content of the movie so we will remove numeric columns and keep only text based columns
+#remove columns [ budget,homepage, original_language,original_title,popularity,pruduction_companies,production_countries,release_date,revenue,runtime,spoken_languages,status,tagline,vote_average,vote_count,movie_id]
+#keep columns [genres,id , keywords,title,overview,cast,crew]
+movies = movies[['genres','movie_id','keywords','title','overview','cast','crew']]
+print(movies.head())
+print(movies.shape)
