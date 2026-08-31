@@ -67,3 +67,9 @@ print(movies["crew"].head(1))
 #convert overview column is in string so convert into list of words and then we will combine it with other columns
 movies["overview"] = movies["overview"].apply(lambda x: x.split())
 print(movies["overview"].head())
+#apply trasnformation for removing spaces in the words of genres, keywords, cast and crew columns because we will combine them with other columns and we will use CountVectorizer to convert them into vector format and CountVectorizer will consider space as a separator so we will remove spaces from the words in these columns
+movies['genres'] = movies['genres'].apply(lambda x: [i.replace(" ","") for i in x])
+movies['keywords'] = movies['keywords'].apply(lambda x: [i.replace(" ","") for i in x])
+movies['cast'] = movies['cast'].apply(lambda x: [i.replace(" ","") for i in x])
+movies['crew'] = movies['crew'].apply(lambda x: [i.replace(" ","") for i in x])
+print(movies.head())
