@@ -80,5 +80,11 @@ print(movies.head())
 #create a new dataframe with only title, movie_id and tags columns
 new_movies = movies[[ 'movie_id','title', 'tags']]
 print(new_movies.head())
+#convert tags column into string format
 new_movies['tags'] = new_movies['tags'].apply(lambda x: " ".join(x))
 print(new_movies.head())
+#convert tags column into lower case
+new_movies['tags'] = new_movies['tags'].apply(lambda x: x.lower())
+print(new_movies.head())
+print(new_movies["tags"][0])
+#
