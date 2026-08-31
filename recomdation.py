@@ -80,3 +80,5 @@ print(movies.head())
 #create a new dataframe with only title, movie_id and tags columns
 new_movies = movies[[ 'movie_id','title', 'tags']]
 print(new_movies.head())
+new_movies['tags'] = new_movies['tags'].apply(lambda x: " ".join(x))
+print(new_movies.head())
