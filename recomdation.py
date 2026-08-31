@@ -77,3 +77,6 @@ print(movies.head())
 movies['tags'] = movies['genres'] + movies['keywords'] + movies['cast'] + movies['crew'] + movies['overview']
 print(movies['tags'].head())
 print(movies.head())
+#create a new dataframe with only title, movie_id and tags columns
+new_movies = movies[[ 'movie_id','title', 'tags']]
+print(new_movies.head())
