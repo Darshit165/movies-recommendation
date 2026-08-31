@@ -26,4 +26,12 @@ print(movies.isnull().sum())
 print(movies.duplicated().sum())
 #clean genre columns with string conversion
 print(movies.iloc[0].genres)
-#convert to ["action","adventure","fantasy","science fiction"]
+#convert to ["action","adventure","fantasy","science fiction"] but problem is full column is in string format so we will use ast.literal_eval to convert it into list format and then we will extract the name of the genre from the list of dictionaries and then we will convert it into string format and then we will combine it with other columns
+import ast
+def convert(obj):
+    l=[]
+    for i in ast.literal_eval(obj):
+        l.append(i['name'])
+    return l
+movies['genres'] = movies['genres'].apply(convert)
+print(movies["genres"].head())
