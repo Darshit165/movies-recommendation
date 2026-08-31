@@ -35,3 +35,6 @@ def convert(obj):
     return l
 movies['genres'] = movies['genres'].apply(convert)
 print(movies["genres"].head())
+#convert keywords column in the same way as genres
+movies['keywords'] = movies['keywords'].apply(convert)
+print(movies["keywords"].head())
