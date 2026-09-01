@@ -113,3 +113,15 @@ from sklearn.metrics.pairwise import cosine_similarity
 similarity = cosine_similarity(vectors)
 print(similarity)
 print(similarity.shape)
+#now we shorted the similarity score in descending order and then we will recommend the movies based on the similarity score
+def recommend(movie):
+    #fetch the index of the movie from the title
+    movie_index = new_movies[new_movies['title'] == movie].index[0]
+    #fetch the similarity score of the movie with all the movies
+    distances = similarity[movie_index]
+    #sort the similarity score in descending order
+    movies_list = sorted(list(enumerate(distances)), reverse=True, key=lambda x: x[1])[1:6]
+    #fetch the movie titles based on the sorted similarity score
+    for i in movies_list:
+        print(new_movies.iloc[i[0]].title)
+print(recommend("The Dark Knight"))
