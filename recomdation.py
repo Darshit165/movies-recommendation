@@ -107,3 +107,9 @@ print(new_movies['tags'][0])
 cv = CountVectorizer(max_features=5000, stop_words='english')
 vectors = cv.fit_transform(new_movies['tags']).toarray()
 print(cv.get_feature_names_out())
+#calculate cosine similarity between the movies based on the vectors with all the movies and then we will recommend the movies based on the similarity score
+#when we calculate higher dimensional vectore we always calculate angle between the vectors and then we will recommend the movies based on the similarity score
+from sklearn.metrics.pairwise import cosine_similarity
+similarity = cosine_similarity(vectors)
+print(similarity)
+print(similarity.shape)
